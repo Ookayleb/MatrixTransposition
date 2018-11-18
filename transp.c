@@ -33,7 +33,11 @@ int main(int argc, char **argv){
                printf("%f\n", inMatrix[i]);
           }
 
-          // for(int i = 0;  i < )
+          for(int i = 0;  i < inputWidth / blockWidth;  i++){
+               for(int j = 0;  j < blockWidth * i;  j++){
+                    outMatrix[] = inMatrix[i*inputWidth + j]
+               }
+          }
           free(inMatrix);
           free(outMatrix);
      }
