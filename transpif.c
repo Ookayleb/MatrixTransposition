@@ -1,4 +1,5 @@
 //Caleb Choy
+//I pledge my honor that I have abided by the Stevens Honor System
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -34,11 +35,11 @@ int main(int argc, char **argv){
           }
 
           for(int i = 0;  i < arraySize;  i++){
-               inMatrix[i] = i;//((float)rand() / RAND_MAX) * 200 - 100;
-               printf("%f\t", inMatrix[i]);
-               if((i + 1) % inputWidth == 0){
-                    printf("\n");
-               }
+               inMatrix[i] = ((float)rand() / RAND_MAX) * 200 - 100;
+               // printf("%f\t", inMatrix[i]);
+               // if((i + 1) % inputWidth == 0){
+               //      printf("\n");
+               // }
           }
 
           // printf("done done\n\n\n");
@@ -80,12 +81,12 @@ int main(int argc, char **argv){
                 // printf("\n\n");
           }
           // printf("\n\n\n");
-          for(int i = 0;  i < arraySize; i++){
-               printf("%f\t", outMatrix[i]);
-               if((i + 1) % inputHeight == 0){
-                    printf("\n");
-               }
-          }
+          // for(int i = 0;  i < arraySize; i++){
+          //      printf("%f\t", outMatrix[i]);
+          //      if((i + 1) % inputHeight == 0){
+          //           printf("\n");
+          //      }
+          // }
 
           free(inMatrix);
           free(outMatrix);

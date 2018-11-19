@@ -1,3 +1,5 @@
+//Caleb Choy
+//I pledge my honor that I have abided by the Stevens Honor System
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -7,7 +9,7 @@ int main(int argc, char **argv){
      struct timeval start;
      gettimeofday(&start, 0);
 
-     for(int repeat = 0;  repeat < 10; repeat++){
+     for(int repeat = 0;  repeat < 1; repeat++){
           if(argc != 3){
                fprintf(stderr, "Wrong number of command-line arguments.\nUsage: %s <width of input matrix> <width of block>\n", argv[0]);
                return -1;
@@ -63,11 +65,7 @@ int main(int argc, char **argv){
           //           printf("\n");
           //      }
           // }
-          // for(int i = 0;  i < inputWidth / blockWidth;  i++){
-          //      for(int j = 0;  j < blockWidth * i;  j++){
-          //           outMatrix[] = inMatrix[i*inputWidth + j]
-          //      }
-          // }
+
           free(inMatrix);
           free(outMatrix);
      }
