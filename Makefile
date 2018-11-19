@@ -1,2 +1,2 @@
-transp:transp.c
-	gcc transp.c -o z
+transpif:transpif.c
+	gcc transpif.c -o x 

@@ -13,23 +13,25 @@ int main(int argc, char **argv){
                return -1;
           }
 
-          int inputWidth = atoi(argv[1]); //N
-          int blockWidth = atoi(argv[2]);
+          int inputWidth      = atoi(argv[1]); //N
+          int blockWidth      = atoi(argv[2]);
+          int arraySize       = inputWidth * inputWidth;
+          int arrayFloatSize  = arraySize * sizeof(float);
           // printf("inputWidth: %d\tblockWidth: %d\n", inputWidth, blockWidth);
 
           float *inMatrix;
-          if((inMatrix = (float*)malloc(inputWidth * inputWidth * sizeof(float))) == NULL){
+          if((inMatrix = (float*)malloc(arrayFloatSize)) == NULL){
                fprintf(stderr, "malloc failed\n");
                return -1;
           }
 
           float *outMatrix;
-          if((outMatrix = (float*)malloc(inputWidth * inputWidth * sizeof(float))) == NULL){
+          if((outMatrix = (float*)malloc(arrayFloatSize)) == NULL){
                fprintf(stderr, "malloc failed\n");
                return -1;
           }
 
-          for(int i = 0;  i < inputWidth * inputWidth;  i++){
+          for(int i = 0;  i < arraySize;  i++){
                inMatrix[i] = ((float)rand() / RAND_MAX) * 200 - 100;
                // printf("%f\t", inMatrix[i]);
                // if((i + 1) % inputWidth == 0){
