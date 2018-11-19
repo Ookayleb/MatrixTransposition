@@ -35,38 +35,57 @@ int main(int argc, char **argv){
 
           for(int i = 0;  i < arraySize;  i++){
                inMatrix[i] = i;//((float)rand() / RAND_MAX) * 200 - 100;
-               // printf("%f\t", inMatrix[i]);
-               // if((i + 1) % inputWidth == 0){
-               //      printf("\n");
-               // }
+               printf("%f\t", inMatrix[i]);
+               if((i + 1) % inputWidth == 0){
+                    printf("\n");
+               }
           }
 
           // printf("done done\n\n\n");
           for(int iBlock = 0;  iBlock < inputHeight;  iBlock += blockWidth){
                for(int jBlock = 0;  jBlock < inputWidth;  jBlock += blockWidth){
-                    // printf("ini: %d\tinj: %d\n", iBlock, jBlock);
-                    // printf("outi: %d\touti: %d\n", jBlock, iBlock);
-                    for(int i = 0;  i < blockWidth;  i++){
-                         for(int j = 0;  j < blockWidth;  j++){
+                    // printf("inIblock: %d\tinJblock: %d\n", iBlock, jBlock);
+                    // printf("outIblock: %d\toutJblock: %d\n", jBlock, iBlock);
+                    int customBlockWidth     = blockWidth;
+                    int customBlockHeight    = blockWidth;
+                    if(jBlock * blockWidth > inputWidth){
+                         customBlockWidth = inputWidth % blockWidth;
+                         //printf("customBlockWidth: %d\n", customBlockWidth);
+                    }
+                    if(iBlock * blockWidth > inputHeight){
+                         customBlockHeight = inputHeight % blockWidth;
+
+                    }
+                    for(int i = 0;  i < customBlockHeight;  i++){
+                         for(int j = 0;  j < customBlockWidth;  j++){
                               int inIndex    = (iBlock * inputWidth) + (i * inputWidth)  +  (j + jBlock);
-                              int outIndex   = (jBlock * inputWidth) + (j * inputWidth)  +  (i + iBlock);
-                              //outMatrix[outIndex] = inMatrix[inIndex];
-                              printf("in: %d\n", inIndex);//(iBlock * inputWidth) + (i * inputWidth)  +  (j + jBlock));
+                              int outIBlock  = jBlock;
+                              int outJBlock  = iBlock;
+                              int outHeight  = inputWidth;
+                              int outWidth   = inputHeight;
+                              //my iblock = jblock    my jblock = iblock
+                              int outIndex   = (outIBlock * outWidth + j * outWidth) + i + outJBlock * i + outJBlock;//jBlock * inputHeight + j)  +  iBlock * inputHeight + i; //(jBlock * inputWidth) + (j * inputWidth)  +  (i + iBlock);
+                              outMatrix[outIndex] = inMatrix[inIndex];
+                              //printf("h: %d\tw: %d\n", customBlockHeight, customBlockWidth);
+                              // if(inIndex + inputHeight > inputWidth){
+                              // printf("in: %d\n", inIndex);//(iBlock * inputWidth) + (i * inputWidth)  +  (j + jBlock));
+                              //  }
                               // printf("out: %d\n", outIndex);//(jBlock * inputWidth) + (j * inputWidth)  +  (i + iBlock));
 
                          }
-                         printf("\n");
+                         // printf("\n");
                     }
-                    printf("new row\n");
+                     // printf("new row\n");
                }
-               printf("\n\n");
+                // printf("\n\n");
           }
-          // for(int i = 0;  i < inputWidth * inputWidth; i++){
-          //      printf("%f\t", outMatrix[i]);
-          //      if((i + 1) % inputWidth == 0){
-          //           printf("\n");
-          //      }
-          // }
+          // printf("\n\n\n");
+          for(int i = 0;  i < arraySize; i++){
+               printf("%f\t", outMatrix[i]);
+               if((i + 1) % inputHeight == 0){
+                    printf("\n");
+               }
+          }
 
           free(inMatrix);
           free(outMatrix);
