@@ -13,8 +13,9 @@ int main(int argc, char **argv){
                return -1;
           }
 
-          int inputWidth = atoi(argv[1]);
+          int inputWidth = atoi(argv[1]); //N
           int blockWidth = atoi(argv[2]);
+          printf("inputWidth: %d\tblockWidth: %d\n", inputWidth, blockWidth);
 
           float *inMatrix;
           if((inMatrix = (float*)malloc(inputWidth * sizeof(float))) == NULL){
@@ -30,14 +31,28 @@ int main(int argc, char **argv){
 
           for(int i = 0;  i < inputWidth;  i++){
                inMatrix[i] = ((float)rand() / RAND_MAX) * 200 - 100;
-               printf("%f\n", inMatrix[i]);
+               //printf("%f\n", inMatrix[i]);
           }
 
-          for(int i = 0;  i < inputWidth / blockWidth;  i++){
-               for(int j = 0;  j < blockWidth * i;  j++){
-                    outMatrix[] = inMatrix[i*inputWidth + j]
+          for(int iBlock = 0;  iBlock < inputWidth;  iBlock += blockWidth){
+               for(int jBlock = 0;  jBlock < inputWidth;  jBlock += blockWidth){
+                    //printf("i: %d\tj: %d\n", iBlock, jBlock);
+                    for(int i = 0;  i < blockWidth;  i++){
+                         for(int j = 0;  j < blockWidth;  j++){
+                              //inMatrix[iBlock * i * inputWidth  +  j * jBlock]
+                              printf("%d\n", (iBlock * inputWidth) + (i * inputWidth)  +  (j + jBlock));
+                         }
+                         printf("\n");
+                    }
+                    printf("new row\n");
                }
+               printf("\n\n");
           }
+          // for(int i = 0;  i < inputWidth / blockWidth;  i++){
+          //      for(int j = 0;  j < blockWidth * i;  j++){
+          //           outMatrix[] = inMatrix[i*inputWidth + j]
+          //      }
+          // }
           free(inMatrix);
           free(outMatrix);
      }
@@ -50,5 +65,5 @@ int main(int argc, char **argv){
      long endSec         = end.tv_sec;
      long endSubSec      = end.tv_usec;
      long totalTime      = (endSec * 1000000 + endSubSec) - (startSec * 1000000 + startSubSec);
-     printf("%ld\n", totalTime);
+     //printf("%ld\n", totalTime);
 }
