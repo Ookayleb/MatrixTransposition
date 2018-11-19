@@ -9,7 +9,7 @@ int main(int argc, char **argv){
      struct timeval start;
      gettimeofday(&start, 0);
 
-     for(int repeat = 0;  repeat < 1; repeat++){
+     for(int repeat = 0;  repeat < 10; repeat++){
           if(argc != 3){
                fprintf(stderr, "Wrong number of command-line arguments.\nUsage: %s <width of input matrix> <width of block>\n", argv[0]);
                return -1;
